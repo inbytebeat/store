@@ -2,6 +2,7 @@ package com.cy.store.mapper;
 
 import com.cy.store.entity.Address;
 import com.cy.store.entity.Cart;
+import com.cy.store.vo.CartVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,14 @@ public class CartTests
         System.out.println(cart);
     }
 
+    @Test
+    public void selectByUid()
+    {
+        List<CartVO> result = cartMapper.findByUid(33);
+        for (CartVO item : result) {
+            System.out.println(item);
+        }
+    }
 
 
 }
