@@ -1,9 +1,11 @@
 package com.cy.store.service;
 
 import com.cy.store.entity.Cart;
+import com.cy.store.vo.CartVO;
 import sun.reflect.generics.tree.VoidDescriptor;
 
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * @author XTY~
@@ -14,4 +16,6 @@ import java.util.Calendar;
 public interface ICartService
 {
     void addToCart(Integer uid,Integer pid,Integer amount,String username);
+
+    List<CartVO> getByUid(Integer uid);
 }

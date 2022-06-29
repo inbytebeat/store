@@ -7,10 +7,12 @@ import com.cy.store.mapper.ProductMapper;
 import com.cy.store.service.ICartService;
 import com.cy.store.service.ex.InsertException;
 import com.cy.store.service.ex.UpdateException;
+import com.cy.store.vo.CartVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author XTY~
@@ -63,6 +65,13 @@ public class CartService implements ICartService
                 throw new UpdateException("更新购物车数据时，产生未知异常");
             }
         }
+    }
+
+    @Override
+    public List<CartVO> getByUid(Integer uid)
+    {
+        List<CartVO> result = cartMapper.findByUid(uid);
+        return result;
     }
 
 }
