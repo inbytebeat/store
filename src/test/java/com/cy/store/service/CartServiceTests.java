@@ -48,4 +48,11 @@ public class CartServiceTests
         System.out.println(integer);
     }
 
+    @Test
+    public void sub()
+    {
+        Integer integer = cartService.subNum(7, 31, "test2");
+        System.out.println(integer);
+    }
+
 }

@@ -102,7 +102,6 @@ public class CartService implements ICartService
     @Override
     public Integer addNum(Integer cid, Integer uid, String modifiedUser)
     {
-        System.out.println(cid);
         Cart cart = cartMapper.findByCid(cid);
         if(cart == null)
         {
@@ -113,6 +112,32 @@ public class CartService implements ICartService
             throw new CartDeniedException("非法的购物车数据");
         }
         Integer num  = cart.getNum() + 1;
+        Integer integer = cartMapper.updateNumber(cid, num, modifiedUser, new Date());
+        if(integer != 1)
+        {
+            throw new UpdateException("购物车商品数量添加失败");
+        }
+        return num;
+    }
+
+    @Override
+    public Integer subNum(Integer cid, Integer uid, String modifiedUser)
+    {
+        Cart cart = cartMapper.findByCid(cid);
+        if(cart == null)
+        {
+            throw new CartNotFoundException("购物车数据不存在");
+        }
+        if(cart.getUid() != uid)
+        {
+            throw new CartDeniedException("非法的购物车数据");
+        }
+        if(cart.getNum() == 0)
+        {
+            return 0;
+        }
+
+        Integer num  = cart.getNum() - 1;
         Integer integer = cartMapper.updateNumber(cid, num, modifiedUser, new Date());
         if(integer != 1)
         {

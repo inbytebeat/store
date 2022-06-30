@@ -48,6 +48,14 @@ public class CartController extends BaseController
         return new JsonResult<>(SAVE_OK,data);
     }
 
+    @RequestMapping("{cid}/num/sub")
+    public JsonResult<Integer> subProductNum(@PathVariable("cid") Integer cid,HttpSession session)
+    {
+        System.out.println(cid);
+        Integer data = cartService.subNum(cid, getUidFromSession(session), getUserNameFromSession(session));
+        return new JsonResult<>(SAVE_OK,data);
+    }
+
     @RequestMapping("lists")
     public JsonResult<List<CartVO>> selectByCid(Integer[] cids,HttpSession session)
     {
