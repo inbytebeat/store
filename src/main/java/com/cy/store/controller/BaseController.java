@@ -36,6 +36,8 @@ public class BaseController
 
     public static final Integer PRODUCT_NOT_FOUND = 5001;
 
+    public static final Integer CART_NOT_FOUND = 7000;
+
 
     public static final Integer SAVE_OK = 200;
     public static final Integer LOGIN_OK = 201;
@@ -118,6 +120,11 @@ public class BaseController
         {
             result.setState(PRODUCT_NOT_FOUND);
             result.setMessage("查询商品异常，商品不存在");
+        }
+        else if(e instanceof CartNotFoundException)
+        {
+            result.setState(CART_NOT_FOUND);
+            result.setMessage("购物车数据不存在");
         }
         return result;
     }

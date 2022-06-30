@@ -1,10 +1,13 @@
 package com.cy.store.service.impl;
 
+import ch.qos.logback.core.joran.conditional.ThenOrElseActionBase;
 import com.cy.store.entity.Cart;
 import com.cy.store.entity.Product;
 import com.cy.store.mapper.CartMapper;
 import com.cy.store.mapper.ProductMapper;
 import com.cy.store.service.ICartService;
+import com.cy.store.service.ex.CartDeniedException;
+import com.cy.store.service.ex.CartNotFoundException;
 import com.cy.store.service.ex.InsertException;
 import com.cy.store.service.ex.UpdateException;
 import com.cy.store.vo.CartVO;
@@ -12,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -72,6 +76,49 @@ public class CartService implements ICartService
     {
         List<CartVO> result = cartMapper.findByUid(uid);
         return result;
+    }
+
+    @Override
+    public List<CartVO> getByCids(Integer uid, Integer[] cids)
+    {
+        List<CartVO> result = cartMapper.findOvByCid(cids);
+        if(result.size() == 0)
+        {
+            return result;
+        }
+        System.out.println(result.size());
+        Iterator<CartVO> iterator = result.iterator();
+        while (iterator.hasNext())
+        {
+            CartVO cartVO = iterator.next();
+            if(cartVO.getUid() != uid)
+            {
+                result.remove(cartVO);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public Integer addNum(Integer cid, Integer uid, String modifiedUser)
+    {
+        System.out.println(cid);
+        Cart cart = cartMapper.findByCid(cid);
+        if(cart == null)
+        {
+            throw new CartNotFoundException("购物车数据不存在");
+        }
+        if(cart.getUid() != uid)
+        {
+            throw new CartDeniedException("非法的购物车数据");
+        }
+        Integer num  = cart.getNum() + 1;
+        Integer integer = cartMapper.updateNumber(cid, num, modifiedUser, new Date());
+        if(integer != 1)
+        {
+            throw new UpdateException("购物车商品数量添加失败");
+        }
+        return num;
     }
 
 }

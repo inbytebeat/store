@@ -18,6 +18,8 @@ public class JsonResult<E> implements Serializable
     /** 实际响应的数据 由于数据类型不确定 所以这里使用了泛型 **/
     private E data;
 
+    public JsonResult(){}
+
     public JsonResult(Integer state){
         this.state  = state;
     }
@@ -27,8 +29,6 @@ public class JsonResult<E> implements Serializable
         this.data = data;
         this.state = state;
     }
-
-    public JsonResult(){}
 
     //如果产生了异常 就将异常传给构造方法
     public JsonResult(Throwable throwable)

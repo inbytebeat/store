@@ -64,5 +64,20 @@ public class CartTests
         }
     }
 
+    @Test
+    public void selectByCids()
+    {
+        Integer[] list = new Integer[]{1,2,3,4,5,6};
+        List<CartVO> result = cartMapper.findOvByCid(list);
+        System.out.println(result);
+    }
+
+    @Test
+    public void selectByCid()
+    {
+        Cart byCid = cartMapper.findByCid(3);
+        System.out.println(byCid);
+    }
+
 
 }

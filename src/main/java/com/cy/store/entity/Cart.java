@@ -24,4 +24,5 @@ public class Cart extends BaseEntity implements Serializable
     private Integer pid;
     private Long price;
     private Integer num;
+
 }

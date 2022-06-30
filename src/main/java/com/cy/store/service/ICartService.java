@@ -18,4 +18,17 @@ public interface ICartService
     void addToCart(Integer uid,Integer pid,Integer amount,String username);
 
     List<CartVO> getByUid(Integer uid);
+
+    List<CartVO> getByCids(Integer uid,Integer[] cids);
+
+    /**
+     * 更新用户购物车商品的数量
+     * @param cid 购物车id
+     * @param uid 用户id
+     * @param modifiedUser 修改者
+     * @return 返回增加数量后当前购物车中的该条商品的当前数量
+     */
+    Integer addNum(Integer cid,Integer uid,String modifiedUser);
+
+
 }

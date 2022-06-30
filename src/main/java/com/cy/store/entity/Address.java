@@ -36,6 +36,4 @@ public class Address extends BaseEntity
     private String tel ;
     private String tag ;
     private Integer isDefault ;
-
-
 }

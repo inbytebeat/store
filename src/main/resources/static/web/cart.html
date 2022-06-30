@@ -116,48 +116,48 @@
 										<td>
 											<input type="checkbox" class="ckitem" />
 										</td>
-										<td><img src="../images/portal/12DELLXPS13-silvery/collect.png" class="img-responsive" /></td>
-										<td>联想(Lenovo)小新Air13 Pro 13.3英寸14.8mm超轻薄笔记本电脑</td>
-										<td>¥<span id="goodsPrice1">5298</span></td>
-										<td>
-											<input type="button" value="-" class="num-btn" onclick="reduceNum(1)" />
-											<input id="goodsCount1" type="text" size="2" readonly="readonly" class="num-text" value="1">
-											<input class="num-btn" type="button" value="+" onclick="addNum(1)" />
-										</td>
-										<td><span id="goodsCast1"></span></td>
-										<td>
-											<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="checkbox" class="ckitem" />
-										</td>
-										<td><img src="../images/portal/16LenovoYOGA900green/collect.png" class="img-responsive" /></td>
-										<td>戴尔(DELL)XPS13-9360-R1609 13.3</td>
-										<td>¥<span id="goodsPrice2">4988</span></td>
-										<td>
-											<input type="button" value="-" class="num-btn" onclick="reduceNum(2)" />
-											<input id="goodsCount2" type="text" size="2" readonly="readonly" class="num-text" value="1">
-											<input class="num-btn" type="button" value="+" onclick="addNum(2)" />
-										</td>
-										<td><span id="goodsCast2"></span></td>
-										<td>
-											<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<input type="checkbox" class="ckitem" />
-										</td>
-										<td><img src="../images/portal/13LenovoIdeaPad310_silvery/collect.png" class="img-responsive" /></td>
-										<td>戴尔(DELL)魔方15MF Pro-R2505TSS灵越</td>
-										<td>¥<span id="goodsPrice3">4699</span></td>
-										<td>
-											<input type="button" value="-" class="num-btn" onclick="reduceNum(3)" />
-											<input id="goodsCount3" type="text" size="2" readonly="readonly" class="num-text" value="1">
-											<input class="num-btn" type="button" value="+" onclick="addNum(3)" />
-										</td>
+									<!--	<td><img src="../images/portal/12DELLXPS13-silvery/collect.png" class="img-responsive" /></td>-->
+									<!--	<td>联想(Lenovo)小新Air13 Pro 13.3英寸14.8mm超轻薄笔记本电脑</td>-->
+									<!--	<td>¥<span id="goodsPrice1">5298</span></td>-->
+									<!--	<td>-->
+									<!--		<input type="button" value="-" class="num-btn" onclick="reduceNum(1)" />-->
+									<!--		<input id="goodsCount1" type="text" size="2" readonly="readonly" class="num-text" value="1">-->
+									<!--		<input class="num-btn" type="button" value="+" onclick="addNum(1)" />-->
+									<!--	</td>-->
+									<!--	<td><span id="goodsCast1"></span></td>-->
+									<!--	<td>-->
+									<!--		<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />-->
+									<!--	</td>-->
+									<!--</tr>-->
+									<!--<tr>-->
+									<!--	<td>-->
+									<!--		<input type="checkbox" class="ckitem" />-->
+									<!--	</td>-->
+									<!--	<td><img src="../images/portal/16LenovoYOGA900green/collect.png" class="img-responsive" /></td>-->
+									<!--	<td>戴尔(DELL)XPS13-9360-R1609 13.3</td>-->
+									<!--	<td>¥<span id="goodsPrice2">4988</span></td>-->
+									<!--	<td>-->
+									<!--		<input type="button" value="-" class="num-btn" onclick="reduceNum(2)" />-->
+									<!--		<input id="goodsCount2" type="text" size="2" readonly="readonly" class="num-text" value="1">-->
+									<!--		<input class="num-btn" type="button" value="+" onclick="addNum(2)" />-->
+									<!--	</td>-->
+									<!--	<td><span id="goodsCast2"></span></td>-->
+									<!--	<td>-->
+									<!--		<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />-->
+									<!--	</td>-->
+									<!--</tr>-->
+									<!--<tr>-->
+									<!--	<td>-->
+									<!--		<input type="checkbox" class="ckitem" />-->
+									<!--	</td>-->
+									<!--	<td><img src="../images/portal/13LenovoIdeaPad310_silvery/collect.png" class="img-responsive" /></td>-->
+									<!--	<td>戴尔(DELL)魔方15MF Pro-R2505TSS灵越</td>-->
+									<!--	<td>¥<span id="goodsPrice3">4699</span></td>-->
+									<!--	<td>-->
+									<!--		<input type="button" value="-" class="num-btn" onclick="reduceNum(3)" />-->
+									<!--		<input id="goodsCount3" type="text" size="2" readonly="readonly" class="num-text" value="1">-->
+									<!--		<input class="num-btn" type="button" value="+" onclick="addNum(3)" />-->
+									<!--	</td>-->
 										<td><span id="goodsCast3"></span></td>
 										<td>
 											<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />
@@ -174,7 +174,7 @@
 							</div>
 							<div>
 								<span class="pull-right">
-								<input type="button" value="  结  算  " class="btn btn-primary btn-lg link-account" />
+								<input type="submit" value="  结  算  " class="btn btn-primary btn-lg link-account" />
 							</span>
 							</div>
 						</form>
@@ -268,59 +268,70 @@
 		</footer>
 		<!--页脚结束-->
 		<script type="text/javascript">
-			$(document).ready(function () {
+			$(document).ready(function() {
 				showCartList();
-			})
+			});
 
-			function showCartList()
-			{
-				//清空tbody标签中的数据
-				$("cart-list").empty();
+			function showCartList() {
+				$("#cart-list").empty();
 				$.ajax({
 					url: "/carts",
-					type: "get",
-					dataType: "json",
-					success: function (json){
+					type: "GET",
+					dataType: "JSON",
+					success: function(json) {
 						let list = json.data;
 						for (let i = 0; i < list.length; i++) {
-							let tr = 't<tr>\n' +
-									'<td>\n' +
-									'<input name="cids" value="#{cid}" type="checkbox" class="ckitem" />\n' +
-									'</td>\n' +
-									'<td><img src="..#{image}collect.png" class="img-responsive" /></td>\n' +
-									'<td>#{title}#{msg}</td>\n' +
-									'<td>¥<span id="goodsPrice#{cid}">#{singlePrice}</span></td>\n' +
-									'<td>\n' +
-									'<input id="price-#{cid}" type="button" value="-" class="num-btn" onclick="reduceNum(1)" />\n' +
-									'<input id="goodsCount#{cid}" type="text" size="2" readonly="readonly" class="num-text" value="#{num}">\n' +
-									'<input id="price+#{cid}" class="num-btn" type="button" value="+" onclick="addNum(1)" />\n' +
-									'</td>\n' +
-									'<td><span id="goodsCast#{cid}">#{totalPrice}</span></td>\n' +
-									'<td>\n' +
-									'<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />\n' +
-									'</td>\n' +
-									'\</tr>'
-							tr = tr.replace(/#{cid}/g,list[i].cid);
-							tr = tr.replace(/{image}}/g,list[i].image);
-							tr = tr.replace(/{title}}/g,list[i].title);
-							tr = tr.replace(/{msg}}/g,list[i].realPrice);
-							tr = tr.replace(/{num}}/g,list[i].num);
-							tr = tr.replace(/{singlePrice}}/g,list[i].price);
-							tr = tr.replace(/{totalPrice}}/g,list[i].price * list[i].price.num);
+							let tr = '<tr>'
+									+ '<td>'
+									+ 	'<input name="cids" value="#{cid}" type="checkbox" class="ckitem" />'
+									+ '</td>'
+									+ '<td><img src="..#{image}collect.png" class="img-responsive" /></td>'
+									+ '<td>#{title}#{msg}</td>'
+									+ '<td>¥<span id="price-#{cid}">#{realPrice}</span></td>'
+									+ '<td>'
+									+ 	'<input type="button" value="-" class="num-btn" onclick="reduceNum(1)" />'
+									+ 	'<input id="num-#{cid}" type="text" size="2" readonly="readonly" class="num-text" value="#{num}">'
+									+ 	'<input class="num-btn" type="button" value="+" onclick="addNum(#{cid})" />'
+									+ '</td>'
+									+ '<td>¥<span id="total-price-#{cid}">#{totalPrice}</span></td>'
+									+ '<td>'
+									+ 	'<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />'
+									+ '</td>'
+									+ '</tr>';
+							tr = tr.replace(/#{cid}/g, list[i].cid);
+							tr = tr.replace(/#{title}/g, list[i].title);
+							tr = tr.replace(/#{image}/g, list[i].image);
+							tr = tr.replace(/#{realPrice}/g, list[i].realPrice);
+							tr = tr.replace(/#{num}/g, list[i].num);
+							tr = tr.replace(/#{totalPrice}/g, list[i].realPrice * list[i].num);
 							$("#cart-list").append(tr);
 						}
-					},
-					error: function (xhr){
-						alert("购物车列表数据加载异常" + xhr.status);
 					}
-				})
+				});
 			}
-			// $(function() {
-			// 	//返回链接
-			// 	$(".link-account").click(function() {
-			// 		location.href = "orderConfirm.html";
-			// 	})
-			// })
+
+			function addNum(cid) {
+				$.ajax({
+					url: "/carts/" + cid + "/num/add",
+					type: "POST",
+					dataType: "JSON",
+					success: function(json) {
+						if (json.state == 200) {
+							// showCartList();
+							$("#num-" + cid).val(json.data);
+							let price = $("#price-" + cid).html();
+							let totalPrice = price * json.data;
+							$("#total-price-" + cid).html(totalPrice);
+						} else {
+							alert("增加商品数量失败！" + json.message);
+						}
+					},
+					error: function(xhr) {
+						alert("您的登录信息已经过期，请重新登录！HTTP响应码：" + xhr.status);
+						location.href = "login.html";
+					}
+				});
+			}
 		</script>
 	</body>
 

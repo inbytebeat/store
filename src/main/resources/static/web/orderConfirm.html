@@ -246,9 +246,55 @@
 			<div class="col-md-12 text-center bottom">
 				Copyright © 2022 dnsc.cn All Rights Reserved 京ICP备08963888号-45 <a target="_blank" href="http://www.dnsc.cn/">圆心科技集团有限公司</a> 版权所有
 			</div>
-
 		</footer>
 		<!--页脚结束-->
+		<script type="text/javascript">
+			$(document).ready(function () {
+				showCartList();
+			})
+
+			function showCartList()
+			{
+				//清空tbody标签中的数据
+				$("cart-list").empty();
+				$.ajax({
+					url: "/carts/lists",
+					type: "get",
+					data: location.search.substr(1),
+					dataType: "json",
+					success: function (json){
+						if(json.status == 200)
+						{
+							let  list = json.data;
+							let allCount = 0;
+							let allPrice = 0;
+							for (let i = 0; i <list.length; i++) {
+								let tr = '<tr>\n' +
+										'<td><img src="..#{image}collect.png" class="img-responsive" /></td>\n' +
+										'<td>#{title}</td>\n' +
+										'<td>¥<span>#{price}</span></td>\n' +
+										'<td>#{num}</td>\n' +
+										'<td><span>#{totalPrice}</span></td>\n' +
+										'</tr>';
+							}
+							tr = tr.replace(/#{iamge}/g,list[i].image);
+							tr = tr.replace(/#{title}/g,list[i].title);
+							tr = tr.replace(/#{num}/g,list[i].num);
+							tr = tr.replace(/#{totalPrice}/g,list[i].num * list[i].price);
+							$("#cart-list").append(tr);
+
+							allCount += list[i].num;
+							allPrice += list[i].price * list[i].num;
+						}
+						$("all-count").html(allCount);
+						$("all-price").html(allPrice);
+					},
+					error: function (xhr){
+						alert("购物车列表数据加载异常" + xhr.status);
+					}
+				})
+			}
+		</script>
 	</body>
 
 </html>
