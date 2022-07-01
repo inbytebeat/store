@@ -4,6 +4,9 @@ import com.cy.store.controller.ex.*;
 import com.cy.store.entity.User;
 import com.cy.store.service.IUserService;
 import com.cy.store.util.JsonResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +34,15 @@ import java.util.UUID;
 @RestController
 //RequestMapping设置当controller收到users下的所有请求时，都会被UserController所接管
 @RequestMapping("users")
+@Api(tags = "用户管理")
 public class UserController extends BaseController
 {
     @Autowired
     private IUserService userService;
 
     @RequestMapping("reg")
+    @ApiOperation("注册用户")
+    @ApiImplicitParam(name = "user",value = "用户信息",readOnly = true)
     //RequestBody表示此方法的响应结果以json的格式进行数据的响应给到前端
     public JsonResult<Void> reg(User user)
     {
@@ -53,9 +59,7 @@ public class UserController extends BaseController
         User user = userService.login(username, password);
         session.setAttribute("uid",user.getUid());
         session.setAttribute("username", user.getUsername());
-        System.out.println("登录成功");
-        System.out.println(getUserNameFromSession(session));
-        System.out.println(getUidFromSession(session));
+        System.out.println("登录成功 用户为:" + username + "uid为" + user.getUid());
         JsonResult<User> userJsonResult = new JsonResult<>(LOGIN_OK,user);
         return userJsonResult;
     }

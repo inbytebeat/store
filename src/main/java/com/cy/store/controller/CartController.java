@@ -56,10 +56,16 @@ public class CartController extends BaseController
         return new JsonResult<>(SAVE_OK,data);
     }
 
-    @RequestMapping("lists")
+    @RequestMapping("list")
     public JsonResult<List<CartVO>> selectByCid(Integer[] cids,HttpSession session)
     {
-        List<CartVO> carts = cartService.getByCids(getUidFromSession(session), cids);
-        return new JsonResult<>(SAVE_OK,carts);
+        System.out.println("uid" + getUidFromSession(session));
+        System.out.print("控制层传来的cid为：");
+        for (Integer cid : cids) {
+            System.out.print(cid + ",");
+        }
+        List<CartVO> data = cartService.getByCids(getUidFromSession(session), cids);
+        System.out.println("控制层: "+data);
+        return new JsonResult<>(SAVE_OK,data);
     }
 }

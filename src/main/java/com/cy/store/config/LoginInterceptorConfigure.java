@@ -21,6 +21,7 @@ public class LoginInterceptorConfigure implements WebMvcConfigurer
     @Override
     public void addInterceptors(InterceptorRegistry registry)
     {
+
         //创建自定义的拦截器对象
         HandlerInterceptor interceptor = new LoginInterceptor();
         //对拦截器进行配置，也就是设置白名单黑名单
@@ -44,7 +45,8 @@ public class LoginInterceptorConfigure implements WebMvcConfigurer
         registry.addInterceptor(interceptor)
                 //用于表示放行的内容是
                 .excludePathPatterns(whitePatterns)
-                //用于表示需要拦截的url是什么
+                .excludePathPatterns("/swagger-resources/**","/swagger-ui/**", "/v3/**", "/error")
+        //用于表示需要拦截的url是什么
                 .addPathPatterns("/**");
     }
 }

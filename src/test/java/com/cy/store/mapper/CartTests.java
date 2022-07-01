@@ -67,7 +67,7 @@ public class CartTests
     @Test
     public void selectByCids()
     {
-        Integer[] list = new Integer[]{1,2,3,4,5,6};
+        Integer[] list = new Integer[]{7,8,9,10};
         List<CartVO> result = cartMapper.findOvByCid(list);
         System.out.println(result);
     }

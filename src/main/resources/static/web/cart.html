@@ -102,7 +102,7 @@
 								<thead>
 									<tr>
 										<th width="8%">
-											<input type="checkbox" class="ckall" onclick="checkall(this)" />全选</th>
+											<input type="checkbox" class="call" onclick="checkall(this)" />全选</th>
 										<th width="110"></th>
 										<th width="29%">商品</th>
 										<th width="11%">单价</th>
@@ -116,48 +116,48 @@
 										<td>
 											<input type="checkbox" class="ckitem" />
 										</td>
-									<!--	<td><img src="../images/portal/12DELLXPS13-silvery/collect.png" class="img-responsive" /></td>-->
-									<!--	<td>联想(Lenovo)小新Air13 Pro 13.3英寸14.8mm超轻薄笔记本电脑</td>-->
-									<!--	<td>¥<span id="goodsPrice1">5298</span></td>-->
-									<!--	<td>-->
-									<!--		<input type="button" value="-" class="num-btn" onclick="reduceNum(1)" />-->
-									<!--		<input id="goodsCount1" type="text" size="2" readonly="readonly" class="num-text" value="1">-->
-									<!--		<input class="num-btn" type="button" value="+" onclick="addNum(1)" />-->
-									<!--	</td>-->
-									<!--	<td><span id="goodsCast1"></span></td>-->
-									<!--	<td>-->
-									<!--		<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />-->
-									<!--	</td>-->
-									<!--</tr>-->
-									<!--<tr>-->
-									<!--	<td>-->
-									<!--		<input type="checkbox" class="ckitem" />-->
-									<!--	</td>-->
-									<!--	<td><img src="../images/portal/16LenovoYOGA900green/collect.png" class="img-responsive" /></td>-->
-									<!--	<td>戴尔(DELL)XPS13-9360-R1609 13.3</td>-->
-									<!--	<td>¥<span id="goodsPrice2">4988</span></td>-->
-									<!--	<td>-->
-									<!--		<input type="button" value="-" class="num-btn" onclick="reduceNum(2)" />-->
-									<!--		<input id="goodsCount2" type="text" size="2" readonly="readonly" class="num-text" value="1">-->
-									<!--		<input class="num-btn" type="button" value="+" onclick="addNum(2)" />-->
-									<!--	</td>-->
-									<!--	<td><span id="goodsCast2"></span></td>-->
-									<!--	<td>-->
-									<!--		<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />-->
-									<!--	</td>-->
-									<!--</tr>-->
-									<!--<tr>-->
-									<!--	<td>-->
-									<!--		<input type="checkbox" class="ckitem" />-->
-									<!--	</td>-->
-									<!--	<td><img src="../images/portal/13LenovoIdeaPad310_silvery/collect.png" class="img-responsive" /></td>-->
-									<!--	<td>戴尔(DELL)魔方15MF Pro-R2505TSS灵越</td>-->
-									<!--	<td>¥<span id="goodsPrice3">4699</span></td>-->
-									<!--	<td>-->
-									<!--		<input type="button" value="-" class="num-btn" onclick="reduceNum(3)" />-->
-									<!--		<input id="goodsCount3" type="text" size="2" readonly="readonly" class="num-text" value="1">-->
-									<!--		<input class="num-btn" type="button" value="+" onclick="addNum(3)" />-->
-									<!--	</td>-->
+										<td><img src="../images/portal/12DELLXPS13-silvery/collect.png" class="img-responsive" /></td>
+										<td>联想(Lenovo)小新Air13 Pro 13.3英寸14.8mm超轻薄笔记本电脑</td>
+										<td>¥<span id="goodsPrice1">5298</span></td>
+										<td>
+											<input type="button" value="-" class="num-btn" onclick="reduceNum(1)" />
+											<input id="goodsCount1" type="text" size="2" readonly="readonly" class="num-text" value="1">
+											<input class="num-btn" type="button" value="+" onclick="addNum(1)" />
+										</td>
+										<td><span id="goodsCast1"></span></td>
+										<td>
+											<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" class="ckitem" />
+										</td>
+										<td><img src="../images/portal/16LenovoYOGA900green/collect.png" class="img-responsive" /></td>
+										<td>戴尔(DELL)XPS13-9360-R1609 13.3</td>
+										<td>¥<span id="goodsPrice2">4988</span></td>
+										<td>
+											<input type="button" value="-" class="num-btn" onclick="reduceNum(2)" />
+											<input id="goodsCount2" type="text" size="2" readonly="readonly" class="num-text" value="1">
+											<input class="num-btn" type="button" value="+" onclick="addNum(2)" />
+										</td>
+										<td><span id="goodsCast2"></span></td>
+										<td>
+											<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" class="ckitem" />
+										</td>
+										<td><img src="../images/portal/13LenovoIdeaPad310_silvery/collect.png" class="img-responsive" /></td>
+										<td>戴尔(DELL)魔方15MF Pro-R2505TSS灵越</td>
+										<td>¥<span id="goodsPrice3">4699</span></td>
+										<td>
+											<input type="button" value="-" class="num-btn" onclick="reduceNum(3)" />
+											<input id="goodsCount3" type="text" size="2" readonly="readonly" class="num-text" value="1">
+											<input class="num-btn" type="button" value="+" onclick="addNum(3)" />
+										</td>
 										<td><span id="goodsCast3"></span></td>
 										<td>
 											<input type="button" onclick="delCartItem(this)" class="cart-del btn btn-default btn-xs" value="删除" />
@@ -280,6 +280,8 @@
 					dataType: "JSON",
 					success: function(json) {
 						let list = json.data;
+						let allCount = 0;
+						let allPrice = 0;
 						for (let i = 0; i < list.length; i++) {
 							let tr = '<tr>'
 									+ '<td>'
@@ -305,7 +307,11 @@
 							tr = tr.replace(/#{num}/g, list[i].num);
 							tr = tr.replace(/#{totalPrice}/g, list[i].realPrice * list[i].num);
 							$("#cart-list").append(tr);
+							allCount += list[i].num;
+							allPrice += list[i].realPrice * list[i].num;
 						}
+						$("#all-count").html(allCount);
+						$("#all-price").html(allPrice);
 					}
 				});
 			}

@@ -15,14 +15,24 @@ import java.util.List;
  */
 public interface ICartService
 {
+    /**
+     * 添加购物车记录
+     * @param uid 用户id
+     * @param pid 商品id
+     * @param amount 商品数量
+     * @param username 用户名称
+     */
     void addToCart(Integer uid,Integer pid,Integer amount,String username);
 
+    /**
+     * 查询用户购物车记录
+     * @param uid 用户id
+     * @return 用户的购物车商品信息
+     */
     List<CartVO> getByUid(Integer uid);
 
-    List<CartVO> getByCids(Integer uid,Integer[] cids);
-
     /**
-     * 增加用户购物车商品的数量
+     * 增加用户购物车商品的数量 +1
      * @param cid 购物车id
      * @param uid 用户id
      * @param modifiedUser 修改者
@@ -30,8 +40,22 @@ public interface ICartService
      */
     Integer addNum(Integer cid,Integer uid,String modifiedUser);
 
-
+    /**
+     * 减少用户购物车中商品的数量 -1
+     * @param cid 购物车id
+     * @param uid 用户id
+     * @param modifiedUser 修改者
+     * @return
+     */
     Integer subNum(Integer cid,Integer uid,String modifiedUser);
+
+    /**
+     * 查询购物车中被选中的商品的信息
+     * @param uid 用户id
+     * @param cid 购物车id
+     * @return 购物车中被选中的商品的信息
+     */
+    List<CartVO> getByCids(Integer uid,Integer[] cid);
 
 
 }

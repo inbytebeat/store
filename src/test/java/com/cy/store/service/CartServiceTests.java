@@ -36,7 +36,7 @@ public class CartServiceTests
     @Test
     public void select()
     {
-        Integer[] list = new Integer[]{1,2,4};
+        Integer[] list = new Integer[]{7,8,9,10};
         List<CartVO> byCids = cartService.getByCids(33, list);
         System.out.println(byCids);
     }

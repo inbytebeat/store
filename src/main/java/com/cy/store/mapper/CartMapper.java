@@ -50,8 +50,8 @@ public interface CartMapper
     List<CartVO> findByUid(@Param("uid") Integer uid);
 
     /**
-     * 根据购物车编号查询加入购物车中的商品数据
-     * @param cid 购物车编号
+     *查询加入购物车中被勾选的准备结算的的商品数据
+     * @param cid 被选中的购物车记录编号
      * @return 购物车中的商品信息
      */
     List<CartVO> findOvByCid(Integer[] cid);

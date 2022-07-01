@@ -14,6 +14,7 @@ import com.cy.store.vo.CartVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -79,24 +80,27 @@ public class CartService implements ICartService
     }
 
     @Override
-    public List<CartVO> getByCids(Integer uid, Integer[] cids)
+    public List<CartVO> getByCids(Integer uid, Integer[] cid)
     {
-        List<CartVO> result = cartMapper.findOvByCid(cids);
-        if(result.size() == 0)
-        {
-            return result;
+        System.out.print("业务层的cid为:");
+        for (Integer num : cid) {
+            System.out.print(num + ",");
         }
-        System.out.println(result.size());
-        Iterator<CartVO> iterator = result.iterator();
-        while (iterator.hasNext())
+        List<CartVO> list = cartMapper.findOvByCid(cid);
+        for (CartVO cart : list) {
+            System.out.print(cart + ",");
+        }
+        Iterator<CartVO> it = list.iterator();
+        while (it.hasNext())
         {
-            CartVO cartVO = iterator.next();
-            if(cartVO.getUid() != uid)
-            {
-                result.remove(cartVO);
+            CartVO cartVO = it.next();
+            if(cartVO.getUid() != uid )
+            {//该条商品记录不属于该用户的购物车中
+                it.remove();
             }
         }
-        return result;
+        System.out.println("业务层："+list);
+        return list;
     }
 
     @Override
