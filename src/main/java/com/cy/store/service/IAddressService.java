@@ -1,6 +1,7 @@
 package com.cy.store.service;
 
 import com.cy.store.entity.Address;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -31,4 +32,12 @@ public interface IAddressService
      * @param username 用户名
      */
     void deleteAddress(Integer aid,Integer uid,String username);
+
+    /**
+     * 根据aid和用户id获取指定地址记录
+     * @param aid 地址编号
+     * @param uid 用户编号
+     * @return 返回地址对象
+     */
+    Address getById(@Param("aid") Integer aid,@Param("uid") Integer uid);
 }

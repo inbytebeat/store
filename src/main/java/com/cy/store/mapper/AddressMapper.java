@@ -2,6 +2,7 @@ package com.cy.store.mapper;
 
 import com.cy.store.entity.Address;
 import com.cy.store.entity.District;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Param;
 import sun.plugin.javascript.navig.Link;
 
@@ -38,11 +39,12 @@ public interface AddressMapper
     List<Address> findByUid(Integer uid);
 
     /**
-     * 根据地址的aid查询地址记录，判断改地址是否存在
+     * 根据地址的aid和uid查询地址记录，判断改地址是否存在
      * @param aid 地址的id
+     * @param uid 用户的id
      * @return 地址对象
      */
-    Address selectByAid(Integer aid);
+    Address selectByAid(@Param("aid") Integer aid,@Param("uid") Integer uid);
 
     /**
      * 在将某条地址记录设置为默认时，现将所有的记录设置为非默认

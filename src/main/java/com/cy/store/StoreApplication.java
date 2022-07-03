@@ -19,12 +19,10 @@ import javax.servlet.MultipartConfigElement;
 @MapperScan("com.cy.store.mapper")
 public class StoreApplication
 {
-
     public static void main(String[] args)
     {
         SpringApplication.run(StoreApplication.class, args);
     }
-
     //修改springmvc中的对于上传文件的配置
     @Bean
     public MultipartConfigElement getMultipartConfigElement()

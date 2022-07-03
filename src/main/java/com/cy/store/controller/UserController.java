@@ -51,6 +51,7 @@ public class UserController extends BaseController
         JsonResult<Void> result = new JsonResult<>(SAVE_OK);
         return result;
     }
+    
 
     //这里参数中的httpsession用于保存用户第一次登录后所产生的的数据，该session是全局的，确保登录后的用户数据可以被全局访问到
     @RequestMapping("login")

@@ -61,6 +61,17 @@ public class UserServiceImpl implements IUserService
         }
     }
 
+    //定义一个MD5算法的加密
+    private String getMd5Password(String password,String salt)
+    {
+        //MD5算法的加密处理
+        for (int i = 0; i < 3; i++)
+        {
+            password = DigestUtils.md5DigestAsHex((salt + password  + salt).getBytes()).toUpperCase();
+        }
+        return password;
+    }
+
     @Override
     public User login(String userName, String passWord)
     {
@@ -170,14 +181,5 @@ public class UserServiceImpl implements IUserService
         }
     }
 
-    //定义一个MD5算法的加密
-    private String getMd5Password(String password,String salt)
-    {
-        //MD5算法的加密处理
-        for (int i = 0; i < 3; i++)
-        {
-            password = DigestUtils.md5DigestAsHex((salt + password  + salt).getBytes()).toUpperCase();
-        }
-        return password;
-    }
+
 }

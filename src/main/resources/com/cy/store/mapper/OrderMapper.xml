@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性 用于指定当前的映射文件和当前那个接口进行映射 需要标注包的全路径-->
+<mapper namespace="com.cy.store.mapper.OrderMapper">
+
+    <!--自定义映射规则
+        id属性:表示该映射规则的id值
+        type属性:表示的是 数据库中查询的结果与哪一个实体类进行结果集的映射
+        column表示字段名称 property表示属性名称
+    -->
+    <resultMap id="orderEntityMap" type="com.cy.store.entity.Order">
+        <!--在定义映射规则时，主键是不可以省略的-->
+        <id property="oid" column="oid" />
+        <result property="uid" column="uid" />
+        <result property="recvName" column="recv_name" />
+        <result property="recvPhone" column="recv_phone" />
+        <result property="recvProvince" column="recv_province" />
+        <result property="recvCity" column="recv_city" />
+        <result property="recvArea" column="recv_area" />
+        <result property="recvAddress" column="recv_address" />
+        <result property="totalPrice" column="total_price" />
+        <result property="orderTime" column="order_time" />
+        <result property="payTime" column="pay_time" />
+    </resultMap>
+
+    <insert id="insertOrder" useGeneratedKeys="true" keyProperty="oid">
+        insert into t_order(
+                            uid, recv_name, recv_phone, recv_province, recv_city, recv_area, recv_address, total_price, status, order_time,
+                            pay_time, created_user, created_time, modified_user, modified_time
+        )values (
+                 #{uid}, #{recvName}, #{recvPhone}, #{recvProvince}, #{recvCity}, #{recvArea}, #{recvAddress}, #{totalPrice},
+                 #{status}, #{orderTime}, #{payTime}, #{createdUser}, #{createdTime}, #{modifiedUser}, #{modifiedTime}
+                )
+    </insert>
+
+    <insert id="insertOrderItem" useGeneratedKeys="true" keyProperty="id">
+        insert into t_order_item(
+                                 oid, pid, title, image, price, num, created_user, created_time, modified_user, modified_time
+        ) values (
+                  #{oid}, #{pid}, #{title}, #{image}, #{price}, #{num}, #{createdUser}, #{createdTime}, #{modifiedUser},#{modifiedTime}
+                 )
+    </insert>
+</mapper>

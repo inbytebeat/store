@@ -88,7 +88,7 @@ public class AddressServiceImpl implements IAddressService
     @Override
     public void setDefault(Integer aid, Integer uid, String username)
     {
-        Address address = addressMapper.selectByAid(aid);
+        Address address = addressMapper.selectByAid(aid,uid);
         if(address == null)
         {
             throw new AddressNotFoundException("该地址可能已经被删除");
@@ -114,7 +114,7 @@ public class AddressServiceImpl implements IAddressService
     @Override
     public void deleteAddress(Integer aid, Integer uid, String username)
     {
-        Address address = addressMapper.selectByAid(aid);
+        Address address = addressMapper.selectByAid(aid,uid);
         if(address == null)
         {
             throw new AddressNotFoundException("地址不存在");
@@ -148,6 +148,28 @@ public class AddressServiceImpl implements IAddressService
         }
 
 
+    }
+
+    @Override
+    public Address getById(Integer aid,Integer uid)
+    {
+        Address selectByAid = addressMapper.selectByAid(aid,uid);
+        if(selectByAid == null)
+        {
+            throw new AddressNotFoundException("地址不存在");
+        }
+        if(!selectByAid.getUid().equals(uid))
+        {
+            throw new AddressDeniedException("非法的地址数据");
+        }
+        selectByAid.setProvinceCode(null);
+        selectByAid.setCityCode(null);
+        selectByAid.setAreaCode(null);
+        selectByAid.setCreatedUser(null);
+        selectByAid.setCreatedTime(null);
+        selectByAid.setModifiedUser(null);
+        selectByAid.setModifiedTime(null);
+        return selectByAid;
     }
 
 

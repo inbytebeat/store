@@ -82,7 +82,6 @@ public class CartService implements ICartService
     @Override
     public List<CartVO> getByCids(Integer uid, Integer[] cid)
     {
-        System.out.print("业务层的cid为:");
         for (Integer num : cid) {
             System.out.print(num + ",");
         }

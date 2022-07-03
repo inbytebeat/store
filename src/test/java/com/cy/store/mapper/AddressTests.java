@@ -55,7 +55,7 @@ public class AddressTests
     @Test
     public void selectByAid()
     {
-        Address address = addressMapper.selectByAid(11);
+        Address address = addressMapper.selectByAid(11,31);
         System.out.println(address);
     }
 
